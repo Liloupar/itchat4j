@@ -34,4 +34,11 @@ public class AppInfo implements Serializable {
 		this.appId = appId;
 	}
 
+	@Override
+	public String toString() {
+		return "AppInfo{" +
+				"type=" + type +
+				", appId='" + appId + '\'' +
+				'}';
+	}
 }

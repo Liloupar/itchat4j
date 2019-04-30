@@ -143,4 +143,23 @@ public class RecommendInfo implements Serializable {
 		this.verifyFlag = verifyFlag;
 	}
 
+	@Override
+	public String toString() {
+		return "RecommendInfo{" +
+				"ticket='" + ticket + '\'' +
+				", userName='" + userName + '\'' +
+				", sex=" + sex +
+				", attrStatus=" + attrStatus +
+				", city='" + city + '\'' +
+				", nickName='" + nickName + '\'' +
+				", scene=" + scene +
+				", province='" + province + '\'' +
+				", content='" + content + '\'' +
+				", alias='" + alias + '\'' +
+				", signature='" + signature + '\'' +
+				", opCode=" + opCode +
+				", qQNum=" + qQNum +
+				", verifyFlag=" + verifyFlag +
+				'}';
+	}
 }

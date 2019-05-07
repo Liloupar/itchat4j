@@ -139,7 +139,7 @@ public class LoginServiceImpl implements ILoginService {
             out.flush();
             out.close();
             try {
-                CommonTools.printQr(qrPath, new String(bytes)); // 打开登陆二维码图片
+                CommonTools.printQr(qrPath, EntityUtils.toString(entity)); // 打开登陆二维码图片
             } catch (Exception e) {
                 LOG.info(e.getMessage());
             }

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
+import java.io.File;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,37 +39,38 @@ public class CommonTools {
     private static Logger LOG = LoggerFactory.getLogger(CommonTools.class);
 
 
-    public static boolean printQr(String qrContent) {
+    public static boolean printQr(String qrPath) {
 
-//        switch (Config.getOsNameEnum()) {
-//            case WINDOWS:
-//                if (Config.getOsNameEnum().equals(OsNameEnum.WINDOWS)) {
-//                    Runtime runtime = Runtime.getRuntime();
-//                    try {
-//                        runtime.exec("cmd /c start " + qrPath);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                break;
-//            case MAC:
-//                if (Config.getOsNameEnum().equals(OsNameEnum.MAC)) {
-//                    Runtime runtime = Runtime.getRuntime();
-//                    try {
-//                        runtime.exec("open " + qrPath);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                break;
-//
-//            case LINUX:
-                LOG.info(QRterminal.getQr(qrContent));
-//                break;
-//
-//            default:
-//                break;
-//        }
+        switch (Config.getOsNameEnum()) {
+            case WINDOWS:
+                if (Config.getOsNameEnum().equals(OsNameEnum.WINDOWS)) {
+                    Runtime runtime = Runtime.getRuntime();
+                    try {
+                        runtime.exec("cmd /c start " + qrPath);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case MAC:
+                if (Config.getOsNameEnum().equals(OsNameEnum.MAC)) {
+                    Runtime runtime = Runtime.getRuntime();
+                    try {
+                        runtime.exec("open " + qrPath);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            case LINUX:
+                String decode = QRterminal.decode(new File(qrPath));
+                LOG.info(QRterminal.getQr(decode));
+                break;
+
+            default:
+                break;
+        }
         return true;
     }
 

@@ -13,8 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -133,13 +131,9 @@ public class LoginServiceImpl implements ILoginService {
         String qrUrl = URLEnum.QRCODE_URL.getUrl() + core.getUuid();
         HttpEntity entity = myHttpClient.doGet(qrUrl, null, true, null);
         try {
-            OutputStream out = new FileOutputStream(qrPath);
-            byte[] bytes = EntityUtils.toByteArray(entity);
-            out.write(bytes);
-            out.flush();
-            out.close();
+            String qrContent = EntityUtils.toString(entity);
             try {
-                CommonTools.printQr(qrPath, EntityUtils.toString(entity)); // 打开登陆二维码图片
+                CommonTools.printQr(qrContent); // 打开登陆二维码图片
             } catch (Exception e) {
                 LOG.info(e.getMessage());
             }

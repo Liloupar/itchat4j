@@ -38,37 +38,37 @@ public class CommonTools {
     private static Logger LOG = LoggerFactory.getLogger(CommonTools.class);
 
 
-    public static boolean printQr(String qrPath, String qrContent) {
+    public static boolean printQr(String qrContent) {
 
-        switch (Config.getOsNameEnum()) {
-            case WINDOWS:
-                if (Config.getOsNameEnum().equals(OsNameEnum.WINDOWS)) {
-                    Runtime runtime = Runtime.getRuntime();
-                    try {
-                        runtime.exec("cmd /c start " + qrPath);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
-            case MAC:
-                if (Config.getOsNameEnum().equals(OsNameEnum.MAC)) {
-                    Runtime runtime = Runtime.getRuntime();
-                    try {
-                        runtime.exec("open " + qrPath);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
-
-            case LINUX:
+//        switch (Config.getOsNameEnum()) {
+//            case WINDOWS:
+//                if (Config.getOsNameEnum().equals(OsNameEnum.WINDOWS)) {
+//                    Runtime runtime = Runtime.getRuntime();
+//                    try {
+//                        runtime.exec("cmd /c start " + qrPath);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                break;
+//            case MAC:
+//                if (Config.getOsNameEnum().equals(OsNameEnum.MAC)) {
+//                    Runtime runtime = Runtime.getRuntime();
+//                    try {
+//                        runtime.exec("open " + qrPath);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                break;
+//
+//            case LINUX:
                 LOG.info(QRterminal.getQr(qrContent));
-                break;
-
-            default:
-                break;
-        }
+//                break;
+//
+//            default:
+//                break;
+//        }
         return true;
     }
 
